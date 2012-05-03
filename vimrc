@@ -10,11 +10,20 @@ set t_Co=256
 if has("gui_running")
 	if has('mac')
 		set guifont=Monaco:h9
+	elseif has('unix')
+		set guifont=ProggyCleanTT\ 12
+		set guioptions-=m
 	endif
 	colorscheme solarized
 endif
+"
+"set cindent
+set tabstop=4		" Tab stop of 4
+set shiftwidth=4	" sw 4 spaces (used on auto indent)
+set softtabstop=4	" 4 spaces as a tab for bs/del
 
 set background=dark
+set ruler		" line numbers and column the cursor is on
 
 set shortmess+=a	" Use [+] [RO] [w] for modified, read-only, modified
 set statusline=%<%f%m%r%y%=%b\ 0x%B\ \ %l,%c%V\ %P
