@@ -108,6 +108,11 @@ highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" smart indenting for python
+au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+set iskeyword+=.,_,$,@,%,#
+
 
 """ #####################################
 """ Key Shortcuts
@@ -131,6 +136,9 @@ map <C-t> <C-w>t
 """ NerdTree toggle
 nmap <F8> :NERDTreeToggle<CR>
 
+" allow arrow keys when code completion window is up
+inoremap <Down> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>
+
 """ ######################################
 """ Searching and Patterns
 set ignorecase							" search is case insensitive
@@ -146,6 +154,14 @@ set formatoptions-=tc					" I can format for myself, thank you very much
 set nosmartindent
 set history=100							" 100 Lines of history
 set showfulltag							" Show more information while completing tags
+
+"Delete trailing white space, useful for Python ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
 
 """ #######################################
 """ Compile
