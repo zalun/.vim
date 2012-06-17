@@ -97,9 +97,9 @@ set softtabstop=4	" 4 spaces as a tab for bs/del
 filetype plugin on
 set iskeyword+=.
 autocmd Filetype html setlocal ts=2 sw=2 sts=0 tw=72 expandtab
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 tw=72 noexpandtab
-autocmd Filetype json setlocal ts=4 sw=4 sts=0 tw=72 noexpandtab
-autocmd Filetype python setlocal ts=4 sw=4 sts=0 tw=72 noexpandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 tw=72 expandtab
+autocmd Filetype json setlocal ts=4 sw=4 sts=0 tw=72 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 tw=72 expandtab
 au BufNewFile *.html,*.py,*.pyw,*.c,*.h,*.json set fileformat=unix
 au! BufRead,BufNewFile *.json setfiletype json 
 " Bad whitespace
